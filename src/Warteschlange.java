@@ -1,33 +1,47 @@
-public class Warteschlange {
-    private Kunde erster;
+public class Warteschlange<E> {
+    private Node<E> erster;
+    private Node<E> letzter;
 
     public Warteschlange(){};
 /*
-gibt den ersten Kunden zurueck
+gibt den Content des ersten Noden zurueck
  */
-    public Kunde gibErsten(){
+    public E gibErsten(){
+        return erster.getContent();
+    }
 
-        return erster;}
     /*entfernt das erste Element in der Warteschlange und speichert das Zweite als Erstes in erster ab
      */
-    public void entfernen(){
-    Kunde speicher;
-    speicher=erster.getNachfolger();
-    erster=speicher;
+    public void remove(){
+        if(erster!=null) {
+            if (erster.getNextNode()==null){
+                erster.setContent(null);
+              erster=null;
+            }else {
+                Node<E> speicher;
+                speicher = erster.getNextNode();
+                erster.setContent(null);
+                erster.setNextNode(null);
+                erster = speicher;
+            }
+        }
     }
 /*
-Speicher den mit dem Parameter mitgegebenen Kunden an letzter Stelle in ser Warteschlange
+Erschafft ein knoten fuer den mitgegebenen Parameter und speicher diesen an der Letzt stelle der Warteschlange
  */
-    public void einfuegen(Kunde pKunde){
+    public void add(E content){
+        Node<E> speicher= new Node(content);
 
         if (erster==null){
-            erster=pKunde;
+            erster=speicher;
+            letzter=speicher;
         }else{
-            erster.setNachfolger(pKunde);
+            letzter.setNextNode(speicher);
+            letzter=speicher;
         }
     }
     /*
-    gibt wahr zurueck, wenn kein Kunde gespeichert ist
+    gibt wahr zurueck, wenn kein Node gespeichert ist
      */
     public boolean gibLeer(){
         if (erster==null){

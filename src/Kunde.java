@@ -10,11 +10,7 @@ public class Kunde {
     setzt den mit dem Parameter gegebenen Kunden an die letzte Stelle
      */
     public void setNachfolger(Kunde pKunde){
-        if (nachfolger==null){
-            nachfolger=pKunde;
-        }else{
-            nachfolger.setNachfolger(pKunde);
-        }
+        nachfolger=pKunde;
     }
 
     /*
