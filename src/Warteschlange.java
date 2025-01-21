@@ -2,7 +2,7 @@ public class Warteschlange<E> {
     private Node<E> erster;
     private Node<E> letzter;
 
-    public Warteschlange(){};
+    public Warteschlange(){}
 /*
 gibt den Content des ersten Noden zurueck
  */
@@ -27,28 +27,23 @@ gibt den Content des ersten Noden zurueck
         }
     }
 /*
-Erschafft ein knoten fuer den mitgegebenen Parameter und speicher diesen an der Letzt stelle der Warteschlange
+Erschafft ein Knoten fuer den mitgegebenen Parameter und speicher diesen an der Letzt stelle der Warteschlange
  */
     public void add(E content){
-        Node<E> speicher= new Node(content);
+        Node<E> speicher= new Node<>(content);
 
         if (erster==null){
             erster=speicher;
-            letzter=speicher;
         }else{
             letzter.setNextNode(speicher);
-            letzter=speicher;
         }
+        letzter=speicher;
     }
     /*
     gibt wahr zurueck, wenn kein Node gespeichert ist
      */
     public boolean gibLeer(){
-        if (erster==null){
-            return true;
-        }else{
-            return false;
-        }
+        return erster == null;
     }
 
 }
