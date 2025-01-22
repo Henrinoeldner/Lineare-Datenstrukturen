@@ -5,7 +5,7 @@ public class List<E> {
     public List(){}
 /**
 *gibt den Content des NodeList an der Stelle des Parameters zurueck
-*@param int pos
+*@param  pos
  */
     public E get(int pos){
         this.setSearched(pos);
