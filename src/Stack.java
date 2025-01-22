@@ -1,10 +1,8 @@
-public class Warteschlange<E> {
-    private NodeQueue<E> erster;
-    private NodeQueue<E> letzter;
-
-    public Warteschlange(){}
+public class Stack<E> {
+    private NodeStack<E> erster;
+    public Stack(){}
 /*
-gibt den Content des ersten NodeQueuen zurueck
+gibt den Content des ersten NodeStackn zurueck
  */
     public E gibErsten(){
         return erster.getContent();
@@ -14,14 +12,14 @@ gibt den Content des ersten NodeQueuen zurueck
      */
     public void remove(){
         if(erster!=null) {
-            if (erster.getNextNodeQueue()==null){
+            if (erster.getNextNodeStack()==null){
                 erster.setContent(null);
               erster=null;
             }else {
-                NodeQueue<E> speicher;
-                speicher = erster.getNextNodeQueue();
+                NodeStack<E> speicher;
+                speicher = erster.getNextNodeStack();
                 erster.setContent(null);
-                erster.setNextNodeQueue(null);
+                erster.setNextNodeStack(null);
                 erster = speicher;
             }
         }
@@ -30,17 +28,15 @@ gibt den Content des ersten NodeQueuen zurueck
 Erschafft ein Knoten fuer den mitgegebenen Parameter und speicher diesen an der Letzt stelle der Warteschlange
  */
     public void add(E content){
-        NodeQueue<E> speicher= new NodeQueue<>(content);
+        NodeStack<E> speicher= new NodeStack<>(content);
 
-        if (erster==null){
-            erster=speicher;
-        }else{
-            letzter.setNextNodeQueue(speicher);
+        if (erster != null) {
+            speicher.setNextNodeStack(erster);
         }
-        letzter=speicher;
+        erster=speicher;
     }
     /*
-    gibt wahr zurueck, wenn kein NodeQueue gespeichert ist
+    gibt wahr zurueck, wenn kein NodeStack gespeichert ist
      */
     public boolean gibLeer(){
         return erster == null;

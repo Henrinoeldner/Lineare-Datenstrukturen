@@ -1,5 +1,4 @@
 public class Kunde {
-    private Kunde nachfolger;
     private String name;
 
     public Kunde(){}
